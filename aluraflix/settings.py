@@ -18,7 +18,7 @@ SECRET_KEY = "django-insecure-$is*cn^%do!sxox^zop3z8=fa1^-#iz5*h_)n8=aq0myy6d#)1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['back-plataforma-videos.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
