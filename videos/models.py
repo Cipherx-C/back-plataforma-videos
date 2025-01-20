@@ -1,22 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from nbformat import ValidationError
 
 class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
-    groups = models.ManyToManyField(
-        'auth.Group',
-        related_name='videos_users',
-        blank=True,
-        help_text=('The groups this user belongs to. A user will get all permissions granted to each of their groups.'),
-        verbose_name=('groups')
-    )
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        related_name='videos_users',
-        blank=True,
-        help_text=('Specific permissions for this user.'),
-        verbose_name=('user permissions')
-    )
+
+    def __str__(self):
+        return self.username
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -30,6 +20,10 @@ class Video(models.Model):
     url = models.URLField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def clean(self):
+        if not self.url.startswith('http'):
+            raise ValidationError('URL must start with "http"')
 
     def __str__(self):
         return self.title
