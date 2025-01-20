@@ -4,6 +4,6 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),  # Supondo que você tenha um app chamado `api`
-    path('', RedirectView.as_view(url='/api/', permanent=True)),  # Redireciona a raiz para o app `api`
+    path('videos/', include('videos.urls')),  # Inclui as URLs do app `videos`
+    path('', RedirectView.as_view(url='/videos/', permanent=True)),  # Redireciona a raiz para o app `videos`
 ]
