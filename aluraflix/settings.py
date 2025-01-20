@@ -121,7 +121,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
-    'http://localhost:8000',  # Se estiver usando http e não https
+    'http://localhost:8000',  
+    'https://back-plataforma-videos.onrender.com',
 ]
 
 
